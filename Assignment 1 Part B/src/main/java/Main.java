@@ -17,7 +17,6 @@ public class Main
         ArrayList <Modules> modules = new ArrayList <Modules> (100);
         ArrayList <Course> courses = new ArrayList <Course> (10);
 
-        Students student1;
         String studentName = "Craig Walsh";
         int studentAge = 28;
         DateTime studentDOB = new DateTime(1992, 1, 7, 13, 49);
@@ -34,33 +33,51 @@ public class Main
         modules.add (new Modules (moduleName, moduleID));
         courses.add (new Course (courseName, courseStartDate, courseEndDate));
 
+        students.get (0).setStudentModules (modules.get (0));
+        students.get (0).setStudentCourses (courses.get (0));
+
+        modules.get (0).setStudentList (students.get (0));
+        modules.get (0).setCourseList (courses.get (0));
+
+        courses.get (0).setModuleList (modules.get (0));
+        courses.get (0).setStudentList (students.get (0));
+
         DateTimeFormatter formatDateTime = DateTimeFormat.forPattern("dd-MM-yy");
 
         for (int i = 0; i < students.size(); i++)
 
         {
 
-            JOptionPane.showMessageDialog (null,
-                    "Name : " + students.get(i).getStudentName() + "\n" +
-                            "Age : " + students.get(i).getStudentAge() + "\n" +
-                            "DOB : " + formatDateTime.print(students.get(i).getStudentDOB()) + "\n" +
-                            "ID : " + students.get(i).getStudentID() + "\n" +
-                            "Username : " + students.get(i).getStudentUsername() + "\n" +
-                            "Courses : " + students.get(i).getStudentCourses() + "\n" +
-                            "Modules : " + students.get(i).getStudentModules());
+            String moduleOutput1 = students.get (i).getStudentModules ().get (i).toString ();
+            String courseOutput1 = students.get (i).getStudentCourses ().get (i).toString ();
+
+            String studentOutput1 = modules.get (i).getStudentList ().get (i).toString ();
+            String courseOutput2 = modules.get (i).getCourseList ().get (i).toString ();
+
+            String moduleOutput2 = courses.get (i).getModuleList ().get (i).toString ();
+            String studentOutput2 = courses.get (i).getStudentList ().get (i).toString ();
 
             JOptionPane.showMessageDialog (null,
-                    "Name : " + modules.get(i).getModuleName() + "\n" +
-                            "ID : " + modules.get(i).getModuleID() + "\n" +
-                            "Student List : " + modules.get(i).getStudentList() + "\n" +
-                            "Course List : " + modules.get(i).getCourseList());
+                    "Name : " + students.get (i).getStudentName () + "\n" +
+                            "Age : " + students.get (i).getStudentAge () + "\n" +
+                            "DOB : " + formatDateTime.print (students.get (i).getStudentDOB ()) + "\n" +
+                            "ID : " + students.get (i).getStudentID () + "\n" +
+                            "Username : " + students.get (i).getStudentUsername () + "\n" +
+                            "Courses : " + courseOutput1 + "\n" +
+                            "Modules : " + moduleOutput1);
 
             JOptionPane.showMessageDialog (null,
-                    "Name : " + courses.get(i).getCourseName() + "\n" +
-                            "Module List : " + courses.get(i).getModuleList() + "\n" +
-                            "Student List : " + courses.get(i).getStudentList() + "\n" +
-                            "Start Date : " + formatDateTime.print(courses.get(i).getStartDate()) + " \n" +
-                            "End Date : " + formatDateTime.print(courses.get(i).getEndDate()));
+                    "Name : " + modules.get (i).getModuleName () + "\n" +
+                            "ID : " + modules.get (i).getModuleID () + "\n" +
+                            "Student List : " + studentOutput1 + "\n" +
+                            "Course List : " + courseOutput2);
+
+            JOptionPane.showMessageDialog (null,
+                    "Name : " + courses.get (i).getCourseName () + "\n" +
+                            "Module List : " + moduleOutput2 + "\n" +
+                            "Student List : " + studentOutput2 + "\n" +
+                            "Start Date : " + formatDateTime.print (courses.get (i).getStartDate ()) + " \n" +
+                            "End Date : " + formatDateTime.print (courses.get (i).getEndDate ()));
 
         }
 
