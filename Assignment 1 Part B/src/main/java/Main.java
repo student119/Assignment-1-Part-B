@@ -18,29 +18,57 @@ public class Main
         ArrayList <Modules> modules = new ArrayList <Modules> (100);
         ArrayList <Course> courses = new ArrayList <Course> (10);
 
-        String studentName = "Craig Walsh";
-        int studentAge = 28;
-        DateTime studentDOB = new DateTime (1992, 1, 7, 13, 49);
-        int studentID = 16101258;
+        String student1Name = "Craig Walsh";
+        int student1Age = 28;
+        DateTime student1DOB = new DateTime (1992, 1, 7, 13, 49);
+        int student1ID = 16101258;
 
-        String moduleName = "Software Engineering III";
-        int moduleID = 417;
+        String student2Name = "Keanu Reeves";
+        int student2Age = 48;
+        DateTime student2DOB = new DateTime (1972, 2, 4, 12, 33);
+        int student2ID = 18302846;
+
+        String student3Name = "Dolly Parton";
+        int student3Age = 56;
+        DateTime student3DOB = new DateTime (1966, 6, 9, 2, 0);
+        int student3ID = 16101258;
+
+        String module1Name = "Software Engineering III";
+        int module1ID = 2020417;
+
+        String module2Name = "Machine Learning";
+        int module2ID = 20204101;
+
+        String module3Name = "Information Retrieval";
+        int module3ID = 20204100;
 
         String courseName = "Computer Science & information Technology";
         DateTime courseStartDate = new DateTime (2021, 6, 8, 9, 0);
         DateTime courseEndDate = new DateTime (2025, 6, 9, 6, 30);
 
-        students.add (new Students (studentName, studentAge, studentDOB, studentID));
-        modules.add (new Modules (moduleName, moduleID));
+        students.add (new Students (student1Name, student1Age, student1DOB, student1ID));
+        students.add (new Students (student2Name, student2Age, student2DOB, student2ID));
+        students.add (new Students (student3Name, student3Age, student3DOB, student3ID));
+
+        modules.add (new Modules (module1Name, module1ID));
+        modules.add (new Modules (module2Name, module2ID));
+        modules.add (new Modules (module3Name, module3ID));
+
         courses.add (new Course (courseName, courseStartDate, courseEndDate));
 
         students.get (0).setStudentModules (modules.get (0));
+        students.get (0).setStudentModules (modules.get (1));
+
         students.get (0).setStudentCourses (courses.get (0));
 
         modules.get (0).setStudentList (students.get (0));
+        modules.get (0).setStudentList (students.get (2));
+
         modules.get (0).setCourseList (courses.get (0));
 
         courses.get (0).setModuleList (modules.get (0));
+        courses.get (0).setModuleList (modules.get (1));
+
         courses.get (0).setStudentList (students.get (0));
 
         DateTimeFormatter formatDateTime = DateTimeFormat.forPattern ("dd-MM-yy");
@@ -49,7 +77,7 @@ public class Main
 
         {
 
-            System.out.println ("Name : " + student.getStudentName () + "\n" +
+            System.out.println ("\n" + "Name : " + student.getStudentName () + "\n" +
                     "Age : " + student.getStudentAge () + "\n" +
                     "DOB : " + formatDateTime.print (student.getStudentDOB ()) + "\n" +
                     "ID : " + student.getStudentID () + "\n" +
@@ -60,19 +88,15 @@ public class Main
             {
 
                 System.out.println ("Name : " + course.getCourseName () + "\n" +
-                        "Module List : " + course.getModuleList () + "\n" +
-                        "Student List : " + course.getStudentList () + "\n" +
                         "Start Date : " + formatDateTime.print (course.getStartDate ()) + " \n" +
-                        "End Date : " + formatDateTime.print (course.getEndDate ()));
+                        "End Date : " + formatDateTime.print (course.getEndDate ()) + "\n");
 
                 for (Modules module : student.getStudentModules())
 
                 {
 
                     System.out.println ("Name : " + module.getModuleName () + "\n" +
-                            "ID : " + module.getModuleID () + "\n" +
-                            "Student List : " + module.getStudentList () + "\n" +
-                            "Course List : " + module.getCourseList());
+                            "ID : " + module.getModuleID () + "\n");
 
                 }
 
