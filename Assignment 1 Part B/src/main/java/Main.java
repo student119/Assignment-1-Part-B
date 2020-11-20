@@ -3,9 +3,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import javax.swing.*;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main
 
@@ -19,27 +17,22 @@ public class Main
         ArrayList <Modules> modules = new ArrayList <Modules> (100);
         ArrayList <Course> courses = new ArrayList <Course> (10);
 
+        Students student1;
         String studentName = "Craig Walsh";
         int studentAge = 28;
         DateTime studentDOB = new DateTime(1992, 1, 7, 13, 49);
         int studentID = 16101258;
-        String studentCourse = "Computer Science & Information Technology";
-        String studentModule = "Software Engineering III";
-
-        String courseName = "Computer Science & information Technology";
-        String courseModules = "Software Engineering III";
-        String courseStudents = "Craig Walsh";
-        DateTime courseStartDate = new DateTime(2021, 6, 8, 9, 0);
-        DateTime courseEndDate = new DateTime(2025, 6, 9, 6, 30);
 
         String moduleName = "Software Engineering III";
         int moduleID = 417;
-        String moduleCourse = "Computer Science & Information Technology";
-        String moduleStudents = "Craig Walsh";
 
-        students.add (new Students (studentName, studentAge, studentDOB, studentID, studentCourse, studentModule));
-        modules.add (new Modules (moduleName, moduleID, moduleStudents, moduleCourse));
-        courses.add (new Course (courseName, courseModules, courseStudents, courseStartDate, courseEndDate));
+        String courseName = "Computer Science & information Technology";
+        DateTime courseStartDate = new DateTime(2021, 6, 8, 9, 0);
+        DateTime courseEndDate = new DateTime(2025, 6, 9, 6, 30);
+
+        students.add (new Students (studentName, studentAge, studentDOB, studentID));
+        modules.add (new Modules (moduleName, moduleID));
+        courses.add (new Course (courseName, courseStartDate, courseEndDate));
 
         DateTimeFormatter formatDateTime = DateTimeFormat.forPattern("dd-MM-yy");
 
