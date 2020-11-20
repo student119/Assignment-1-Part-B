@@ -1,21 +1,27 @@
+// Imports the joda date/time library.
 import org.joda.time.DateTime;
+// Imports the joda date/time format library.
 import org.joda.time.format.DateTimeFormat;
+// Imports the joda date/time formatter library.
 import org.joda.time.format.DateTimeFormatter;
-
-import javax.swing.*;
-import java.text.SimpleDateFormat;
+// Imports the java util ArrayList library.
 import java.util.ArrayList;
 
+// Public method of type class named Main.
 public class Main
 
 {
 
+    // Public static method of type void named Main with a String array named args as it's parameter.
     public static void main (String [] args)
 
     {
 
+        //
         ArrayList <Students> students = new ArrayList <Students> (1000);
+        //
         ArrayList <Modules> modules = new ArrayList <Modules> (100);
+        //
         ArrayList <Course> courses = new ArrayList <Course> (10);
 
         String student1Name = "Craig Walsh";
@@ -42,9 +48,17 @@ public class Main
         String module3Name = "Information Retrieval";
         int module3ID = 20204100;
 
-        String courseName = "Computer Science & information Technology";
-        DateTime courseStartDate = new DateTime (2021, 6, 8, 9, 0);
-        DateTime courseEndDate = new DateTime (2025, 6, 9, 6, 30);
+        String course1Name = "Computer Science & information Technology";
+        DateTime course1StartDate = new DateTime (2021, 6, 8, 9, 0);
+        DateTime course1EndDate = new DateTime (2025, 6, 9, 6, 30);
+
+        String course2Name = "Software Development";
+        DateTime course2StartDate = new DateTime (2021, 6, 8, 9, 0);
+        DateTime course2EndDate = new DateTime (2025, 6, 9, 6, 30);
+
+        String course3Name = "Computer Engineering";
+        DateTime course3StartDate = new DateTime (2021, 6, 8, 9, 0);
+        DateTime course3EndDate = new DateTime (2025, 6, 9, 6, 30);
 
         students.add (new Students (student1Name, student1Age, student1DOB, student1ID));
         students.add (new Students (student2Name, student2Age, student2DOB, student2ID));
@@ -54,30 +68,38 @@ public class Main
         modules.add (new Modules (module2Name, module2ID));
         modules.add (new Modules (module3Name, module3ID));
 
-        courses.add (new Course (courseName, courseStartDate, courseEndDate));
+        courses.add (new Course (course1Name, course1StartDate, course1EndDate));
+        courses.add (new Course (course2Name, course2StartDate, course2EndDate));
+        courses.add (new Course (course3Name, course3StartDate, course3EndDate));
 
         students.get (0).setStudentModules (modules.get (0));
         students.get (0).setStudentModules (modules.get (1));
 
         students.get (0).setStudentCourses (courses.get (0));
+        students.get (2).setStudentCourses (courses.get (1));
 
         modules.get (0).setStudentList (students.get (0));
         modules.get (0).setStudentList (students.get (2));
 
-        modules.get (0).setCourseList (courses.get (0));
+        modules.get (0).setCourseList (courses.get (1));
+        modules.get (0).setCourseList (courses.get (2));
 
         courses.get (0).setModuleList (modules.get (0));
         courses.get (0).setModuleList (modules.get (1));
 
         courses.get (0).setStudentList (students.get (0));
+        courses.get (1).setStudentList (students.get (1));
+        courses.get (2).setStudentList (students.get (2));
 
         DateTimeFormatter formatDateTime = DateTimeFormat.forPattern ("dd-MM-yy");
+
+        System.out.println ("\n----------Student Details----------\n");
 
         for (Students student : students)
 
         {
 
-            System.out.println ("\n" + "Name : " + student.getStudentName () + "\n" +
+            System.out.println ("Name : " + student.getStudentName () + "\n" +
                     "Age : " + student.getStudentAge () + "\n" +
                     "DOB : " + formatDateTime.print (student.getStudentDOB ()) + "\n" +
                     "ID : " + student.getStudentID () + "\n" +
@@ -87,7 +109,7 @@ public class Main
 
             {
 
-                System.out.println ("Name : " + course.getCourseName () + "\n" +
+                System.out.println ("Current Course : " + course.getCourseName () + "\n" +
                         "Start Date : " + formatDateTime.print (course.getStartDate ()) + " \n" +
                         "End Date : " + formatDateTime.print (course.getEndDate ()) + "\n");
 
@@ -95,7 +117,7 @@ public class Main
 
                 {
 
-                    System.out.println ("Name : " + module.getModuleName () + "\n" +
+                    System.out.println ("Course Module : " + module.getModuleName () + "\n" +
                             "ID : " + module.getModuleID () + "\n");
 
                 }
@@ -104,53 +126,77 @@ public class Main
 
         }
 
+        System.out.println ("----------End of Student Details----------");
+
+        System.out.println ("\n----------Module Details----------\n");
+
         for (Modules module : modules)
 
         {
 
-            //
+            System.out.println ("Name : " + module.getModuleName () + "\n" +
+                    "ID : " + module.getModuleID () + "\n");
 
             for (Students student : module.getStudentList())
 
             {
 
-                //
+                System.out.println ("Module Student : " + student.getStudentName () + "\n" +
+                        "Age : " + student.getStudentAge () + "\n" +
+                        "DOB : " + formatDateTime.print (student.getStudentDOB ()) + "\n" +
+                        "ID : " + student.getStudentID () + "\n" +
+                        "Username : " + student.getStudentUsername () + "\n");
 
                 for (Course course : module.getCourseList())
 
                 {
 
-                    //
+                    System.out.println ("Module Course : " + course.getCourseName () + "\n" +
+                            "Start Date : " + formatDateTime.print (course.getStartDate ()) + " \n" +
+                            "End Date : " + formatDateTime.print (course.getEndDate ()) + "\n");
 
                 }
 
             }
 
         }
+
+        System.out.println ("----------End of Module Details----------");
+
+        System.out.println ("\n----------Course Details----------\n");
 
         for (Course course :courses)
 
         {
 
-            //
+            System.out.println ("Name : " + course.getCourseName () + "\n" +
+                    "Start Date : " + formatDateTime.print (course.getStartDate ()) + " \n" +
+                    "End Date : " + formatDateTime.print (course.getEndDate ()) + "\n");
 
             for (Modules module : course.getModuleList())
 
             {
 
-                //
+                System.out.println ("Course Module : " + module.getModuleName () + "\n" +
+                        "ID : " + module.getModuleID () + "\n");
 
                 for (Students student : course.getStudentList())
 
                 {
 
-                    //
+                    System.out.println ("Course Student : " + student.getStudentName () + "\n" +
+                            "Age : " + student.getStudentAge () + "\n" +
+                            "DOB : " + formatDateTime.print (student.getStudentDOB ()) + "\n" +
+                            "ID : " + student.getStudentID () + "\n" +
+                            "Username : " + student.getStudentUsername () + "\n");
 
                 }
 
             }
 
         }
+
+        System.out.println ("----------End of Course Details----------");
 
     }
 
