@@ -19,10 +19,6 @@ public class Main
         ArrayList <Modules> modules = new ArrayList <Modules> (100);
         ArrayList <Course> courses = new ArrayList <Course> (10);
 
-        // Students student1;
-        // Modules module1;
-        // Course course1;
-
         String studentName = "Craig Walsh";
         int studentAge = 28;
         DateTime studentDOB = new DateTime(1992, 1, 7, 13, 49);
@@ -45,22 +41,33 @@ public class Main
         modules.add (new Modules (moduleName, moduleID, moduleStudents, moduleCourse));
         courses.add (new Course (courseName, courseModules, courseStudents, courseStartDate, courseEndDate));
 
-        DateTimeFormatter format = DateTimeFormat.forPattern ("dd-MM-yy");
-        SimpleDateFormat dt1 = new SimpleDateFormat ("dd-MM-yy");
+        DateTimeFormatter formatDateTime = DateTimeFormat.forPattern("dd-MM-yy");
 
         for (int i = 0; i < students.size(); i++)
 
         {
 
-            JOptionPane.showMessageDialog(null, students.get(i).getStudentName() + "\n" + students.get(i).getStudentAge() + "\n"
-                    + students.get(i).getStudentDOB() + "\n" + students.get(i).getStudentID() + "\n" + students.get(i).getStudentUsername() + "\n"
-                    + students.get(i).getStudentCourses() + "\n" + students.get(i).getStudentModules());
+            JOptionPane.showMessageDialog (null,
+                    "Name : " + students.get(i).getStudentName() + "\n" +
+                            "Age : " + students.get(i).getStudentAge() + "\n" +
+                            "DOB : " + formatDateTime.print(students.get(i).getStudentDOB()) + "\n" +
+                            "ID : " + students.get(i).getStudentID() + "\n" +
+                            "Username : " + students.get(i).getStudentUsername() + "\n" +
+                            "Courses : " + students.get(i).getStudentCourses() + "\n" +
+                            "Modules : " + students.get(i).getStudentModules());
 
-            // System.out.println (students.get(i).getStudentName());
+            JOptionPane.showMessageDialog (null,
+                    "Name : " + modules.get(i).getModuleName() + "\n" +
+                            "ID : " + modules.get(i).getModuleID() + "\n" +
+                            "Student List : " + modules.get(i).getStudentList() + "\n" +
+                            "Course List : " + modules.get(i).getCourseList());
 
-//            System.out.println(students.get(i).getStudentName() + "\n" + students.get(i).getStudentAge() + "\n"
-//                    + students.get(i).getStudentDOB() + "\n" + students.get(i).getStudentID() + "\n" + students.get(i).getStudentUsername() + "\n"
-//                    + students.get(i).getStudentCourses() + "\n" + students.get(i).getStudentModules());
+            JOptionPane.showMessageDialog (null,
+                    "Name : " + courses.get(i).getCourseName() + "\n" +
+                            "Module List : " + courses.get(i).getModuleList() + "\n" +
+                            "Student List : " + courses.get(i).getStudentList() + "\n" +
+                            "Start Date : " + formatDateTime.print(courses.get(i).getStartDate()) + " \n" +
+                            "End Date : " + formatDateTime.print(courses.get(i).getEndDate()));
 
         }
 
