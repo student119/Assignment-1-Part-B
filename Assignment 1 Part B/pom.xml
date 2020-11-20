@@ -77,7 +77,7 @@
         <dependency>
             <groupId>com.github.student119</groupId>
             <artifactId>Assignment-1</artifactId>
-            <version>1.6</version>
+            <version>1.7</version>
         </dependency>
 
     </dependencies>
